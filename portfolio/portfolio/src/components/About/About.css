@@ -1,0 +1,287 @@
+#about {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transform-origin: center center;
+    will-change: transform, opacity;
+}
+
+/* Left side */
+.leftabout {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-direction: row;
+    will-change: transform;
+}
+
+/* New Tech Stack Animation */
+.tech-stack-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.tech-center {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 20px #7ad7ea);
+    z-index: 10;
+    will-change: transform;
+}
+
+.tech-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    will-change: transform;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.tech-emoji {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px rgba(122, 215, 234, 0.5));
+    transition: all 0.3s ease;
+}
+
+.tech-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #7ad7ea, #c62a60);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.tech-icon:hover .tech-name {
+    background: linear-gradient(45deg, var(--tech-color), #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* About Details */
+.aboutdetails {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.aboutdetails ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aboutdetails h1 {
+    background: linear-gradient(to right, rgb(198, 42, 96), white);
+    background-clip: text;
+    color: transparent;
+    will-change: transform, opacity;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.aboutdetails li {
+    color: white;
+    will-change: transform, opacity;
+    margin: 12px 0;
+    font-size: 1.1rem;
+    padding: 5px 0;
+}
+
+.aboutdetails span {
+    color: #7ad7ea;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.personalinfo, .education, .skills {
+    will-change: transform;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(122, 215, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.personalinfo:hover, .education:hover, .skills:hover {
+    border-color: rgba(122, 215, 234, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(122, 215, 234, 0.2);
+}
+
+/* Right side */
+.rightabout {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    will-change: transform;
+}
+
+.rightabout > div {
+    will-change: transform;
+}
+
+/* Performance optimizations */
+#about, .leftabout, .rightabout, .tech-stack-container, .tech-icon, .personalinfo, .education, .skills {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Glow effect for tech stack */
+.tech-stack-container::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(122, 215, 234, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 1024px) {
+    #about {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .leftabout,
+    .rightabout {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .tech-stack-container {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 30px;
+    }
+
+    .tech-center {
+        font-size: 3rem;
+    }
+
+    .tech-emoji {
+        font-size: 2rem;
+    }
+
+    .tech-name {
+        font-size: 0.8rem;
+    }
+
+    .aboutdetails {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-stack-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .tech-center {
+        font-size: 2.5rem;
+    }
+
+    .tech-emoji {
+        font-size: 1.8rem;
+    }
+
+    .aboutdetails h1 {
+        font-size: 1.5rem;
+    }
+
+    .aboutdetails li {
+        font-size: 1rem;
+    }
+
+    /* Fix Right Cards size on small screens */
+    .rightabout {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .rightabout > div {
+        width: 45%;
+        min-width: 140px;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .leftabout {
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .tech-stack-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .tech-center {
+        font-size: 2rem;
+    }
+
+    .tech-emoji {
+        font-size: 1.5rem;
+    }
+
+    .tech-name {
+        font-size: 0.7rem;
+    }
+
+    .aboutdetails h1 {
+        font-size: 1.3rem;
+    }
+
+    .aboutdetails li {
+        font-size: 0.9rem;
+    }
+
+    .rightabout {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .rightabout > div {
+        width: 80%;
+        min-width: unset;
+    }
+}

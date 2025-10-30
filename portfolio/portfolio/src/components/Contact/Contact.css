@@ -1,0 +1,255 @@
+#contact {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Left side (Image) */
+.leftcontact {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.leftcontact img {
+    width: 65%;
+    max-width: 500px;
+    filter: drop-shadow(2px 2px 25px #7ad7ea);
+    will-change: transform;
+}
+
+/* Right side (Form + Info) */
+.rightcontact {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    will-change: transform;
+    color: #bbb;
+}
+
+/* Contact Info */
+.contact-info {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+    padding: 12px 16px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 5px rgba(122, 215, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.info-item a {
+    color: #7ad7ea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.info-item:hover {
+    box-shadow: 0 0 15px rgba(122, 215, 234, 0.6);
+}
+
+/* Icons */
+.info-icon {
+    font-size: 1.2rem;
+    color: #7ad7ea;
+}
+
+/* Right contact form */
+.rightcontact form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 40px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(122, 215, 234, 0.5);
+    will-change: transform, box-shadow;
+}
+
+.rightcontact form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, rgb(198, 42, 96), #7ad7ea);
+    background-clip: text;
+    color: transparent;
+    will-change: transform, opacity;
+}
+
+/* Inputs */
+.rightcontact input,
+.rightcontact textarea {
+    width: 100%;
+    padding: 15px 18px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: #1e1e1e;
+    color: #fff;
+    font-size: 1.05rem;
+    box-shadow: inset 0 0 5px rgba(122, 215, 234, 0.3);
+    will-change: transform, box-shadow;
+}
+
+.rightcontact input::placeholder,
+.rightcontact textarea::placeholder {
+    color: #bbb;
+    font-size: 0.95rem;
+}
+
+#textarea {
+    min-height: 150px;
+    resize: none;
+}
+
+/* Button */
+#btn {
+    background: #7ad7ea;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(122, 215, 234, 0.6);
+    will-change: transform, box-shadow;
+}
+
+/* Performance optimizations */
+#contact, .leftcontact, .rightcontact, .leftcontact img, .rightcontact form, .contact-info, .info-item {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Glow effect for form */
+.rightcontact form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #7ad7ea, #c62a60, #7ad7ea);
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rightcontact form:hover::before {
+    opacity: 0.3;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 1024px) {
+    #contact {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .leftcontact,
+    .rightcontact {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .leftcontact img {
+        width: 70%;
+    }
+
+    .rightcontact form, .contact-info {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .rightcontact form {
+        padding: 25px;
+        gap: 15px;
+    }
+
+    .rightcontact form h2 {
+        font-size: 1.6rem;
+    }
+
+    .rightcontact input,
+    .rightcontact textarea {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    #btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .info-item {
+        font-size: 0.95rem;
+        padding: 10px 14px;
+    }
+
+    .info-icon {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .leftcontact img {
+        width: 80%;
+    }
+
+    .rightcontact form, .contact-info {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .rightcontact form h2 {
+        font-size: 1.4rem;
+    }
+
+    #textarea {
+        min-height: 120px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .rightcontact form,
+    .leftcontact img,
+    .rightcontact input,
+    .rightcontact textarea,
+    #btn,
+    .contact-info, .info-item {
+        animation: none;
+        transition: none;
+    }
+}

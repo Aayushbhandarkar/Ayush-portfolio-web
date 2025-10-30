@@ -1,0 +1,116 @@
+nav {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    background-color: rgb(17,20,23);
+}
+
+nav ul a {
+    cursor: pointer;
+}
+
+nav ul a:hover {
+  color: rgb(107, 143, 143);
+  border-bottom: 2px solid white;
+}
+
+.active {
+    color: rgb(107, 143, 143);
+    border-bottom: 2px solid white;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    list-style: none;
+    font-size: 20px;
+}
+
+nav h1 {
+    font-size: 30px;
+    background: linear-gradient(to right , rgb(0, 255, 242) , white );
+    background-clip: text;
+    color: transparent;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;       /* hamburger ka width */
+  height: 22px;      /* height */
+  cursor: pointer;
+}
+
+.ham {
+  height: 3px;       /* line thickness */
+  width: 100%;       /* full width */
+  background-color: white;  /* color tu change kar sakta */
+  border-radius: 5px;
+  transition: all 0.3s ease;  /* smooth animation */
+}
+
+/* By default desktop menu visible, mobile hidden */
+.desktopmenu {
+  display: flex;
+}
+
+.mobilemenu {
+  display: none;
+  position: absolute;
+  top: 80px; /* nav ke neeche */
+  right: 0;
+  background: #111;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Show mobile menu when "show" class active */
+.mobilemenu.show {
+  display: flex;
+}
+
+/* Hamburger default hidden on desktop */
+.hamburger {
+  display: none;
+}
+
+/* Responsive breakpoint */
+@media (max-width: 768px) {
+  .desktopmenu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hamburger animation (X toggle) */
+.hamburger.open .ham:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open .ham:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .ham:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 🚀 Navbar ke neeche content na chhupe */
+section {
+  scroll-margin-top: 90px; /* nav ki height ke equal */
+}
